@@ -4,6 +4,6 @@
 
 body {
   min-height: 100vh;
-  background-color: black;
+  background-color: var(--base-100);
   font-family: "Inter", sans-serif;
 }

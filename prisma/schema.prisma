@@ -23,6 +23,7 @@ model Projects {
     Schema    Json?
     Owner     User?     @relation(fields: [userId], references: [id])
     userId    String?
+    title     String?
 }
 
 // Necessary for Next auth
