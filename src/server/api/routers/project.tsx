@@ -11,8 +11,8 @@ export const projectRoute = createTRPCRouter({
       const { platform, authType } = input;
       if (!platform || !authType) throw new TRPCError({ code: "BAD_REQUEST" });
 
-      const project = await ctx.prisma.projects.upsert({
-        create: {},
-      });
+      // const project = await ctx.prisma.projects.upsert({
+      //   create: {},
+      // });
     }),
 });
