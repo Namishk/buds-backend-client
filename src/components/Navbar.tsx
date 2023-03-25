@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { FC } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
@@ -8,9 +7,9 @@ const Navbar = () => {
 
   const handelAuth = () => {
     if (status === "authenticated") {
-      signOut();
+      return () => signOut();
     } else {
-      signIn();
+      return () => signIn();
     }
   };
   const router = useRouter();

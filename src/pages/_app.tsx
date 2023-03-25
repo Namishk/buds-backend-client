@@ -7,7 +7,6 @@ import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import Navbar from "~/components/Navbar";
 import PageHeader from "~/components/PageHeader";
-import { Html } from "next/document";
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
