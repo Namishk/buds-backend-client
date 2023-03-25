@@ -67,13 +67,13 @@ const Navbar = () => {
                 </a>
               </li>
 
-              <li onClick={() => handelAuth()}>
+              <li onClick={() => void signOut()}>
                 <a>Logout</a>
               </li>
             </ul>
           </div>
         ) : (
-          <div className="btn" onClick={() => handelAuth()}>
+          <div className="btn" onClick={() => void signIn()}>
             Sign In
           </div>
         )}
