@@ -7,17 +7,16 @@ import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import Navbar from "~/components/Navbar";
 import PageHeader from "~/components/PageHeader";
+// import BackgroundWrapper from "~/components/BackgroundWrapper";
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
   return (
     <SessionProvider session={session}>
-      {/* <Html lang="en" data-theme="dark"> */}
       <PageHeader />
       <Navbar />
       <Component {...pageProps} />
-      {/* </Html> */}
     </SessionProvider>
   );
 };

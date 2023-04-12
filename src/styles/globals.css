@@ -4,6 +4,6 @@
 
 body {
   min-height: 100vh;
-  background-color: var(--base-100);
-  font-family: "Inter", sans-serif;
+  font-family: "Averia Sans Libre", "cursive";
+  /* background-color: white; */
 }

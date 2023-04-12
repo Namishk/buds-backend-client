@@ -9,7 +9,7 @@ type Props = {
 const ComponentWrapper = ({ children }: Props) => {
   return (
     <>
-      <main className="m-auto w-4/5 pt-8">{children}</main>
+      <main className="ml-[10%] pt-8">{children}</main>
     </>
   );
 };
