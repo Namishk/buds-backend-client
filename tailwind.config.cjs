@@ -9,7 +9,7 @@ const config = {
     logs: true,
     rtl: false,
     prefix: "",
-    darkTheme: "dark",
+    darkTheme: "light",
   },
 
   theme: {

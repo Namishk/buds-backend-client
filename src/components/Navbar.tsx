@@ -12,7 +12,6 @@ const Navbar = () => {
       return () => signIn();
     }
   };
-  const router = useRouter();
   return (
     <div className="navbar z-10 justify-between bg-transparent py-4 px-4">
       <div className="">
@@ -61,7 +60,10 @@ const Navbar = () => {
             </ul>
           </div>
         ) : (
-          <div className="btn" onClick={() => void signIn()}>
+          <div
+            className="btn w-24 border-0 bg-white text-black drop-shadow-card hover:bg-blue-grotto"
+            onClick={() => void signIn()}
+          >
             Sign In
           </div>
         )}

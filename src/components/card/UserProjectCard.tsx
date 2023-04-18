@@ -1,7 +1,11 @@
 import { useSession } from "next-auth/react";
 import { FC } from "react";
 import { useRouter } from "next/navigation";
-const NewProjectCard: FC = () => {
+import { Projects } from "@prisma/client";
+interface UserProjectCardProps {
+  project: Projects;
+}
+const UserProjectCard: FC<UserProjectCardProps> = ({ project }) => {
   const { status } = useSession();
   const { push } = useRouter();
   const handelClick = async () => {
@@ -9,7 +13,7 @@ const NewProjectCard: FC = () => {
       return alert("Login to create a project");
     }
 
-    return push("/createProject");
+    return push(`/${project.id}`);
   };
   return (
     <div
@@ -17,10 +21,9 @@ const NewProjectCard: FC = () => {
       onClick={() => handelClick()}
     >
       <div className="card-body flex-col items-center justify-center text-center text-white">
-        <span className="text-5xl font-bold">+</span>
-        <span className="text-xl">Add Project</span>
+        <span className="text-5xl font-bold">{project.title}</span>
       </div>
     </div>
   );
 };
-export default NewProjectCard;
+export default UserProjectCard;

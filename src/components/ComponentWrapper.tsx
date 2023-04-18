@@ -7,11 +7,7 @@ type Props = {
 };
 
 const ComponentWrapper = ({ children }: Props) => {
-  return (
-    <>
-      <main className="ml-[10%] pt-8">{children}</main>
-    </>
-  );
+  return <main className="mx-[10%] pt-8">{children}</main>;
 };
 
 export default ComponentWrapper;
