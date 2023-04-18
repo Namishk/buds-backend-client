@@ -29,15 +29,18 @@ const index: FC<indexProps> = ({}) => {
   const handelGetSchema = async () => {
     console.log("start");
     console.log(JSON.parse(localStorage.getItem("schema") as string));
-    const schema = await fetch("http://localhost:1337/generate", {
-      method: "POST",
-      body: localStorage.getItem("schema"),
-      redirect: "follow",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
+    const schema = await fetch(
+      "https://schema-generator-service.up.railway.app/generate",
+      {
+        method: "POST",
+        body: localStorage.getItem("schema"),
+        redirect: "follow",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
 
     const fileData = await schema.text();
 
