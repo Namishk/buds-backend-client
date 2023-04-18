@@ -11,7 +11,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { HeroIcon } from "./projectTypes";
 
-export const prismaTypesToIcons: Record<string, HeroIcon> = {
+export const prismaTypesToIcons: any = {
   Int: HashtagIcon,
   DateTime: ClockIcon,
   String: Bars3BottomLeftIcon,
