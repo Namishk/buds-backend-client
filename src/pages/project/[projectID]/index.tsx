@@ -26,7 +26,7 @@ const index: FC<indexProps> = ({}) => {
   }, [isFetching]);
   console.log(query.projectID);
 
-  const handelGetFiles = async () => {
+  const handelGetSchema = async () => {
     console.log("start");
     console.log(JSON.parse(localStorage.getItem("schema") as string));
     const schema = await fetch("http://localhost:1337/generate", {
@@ -57,6 +57,43 @@ const index: FC<indexProps> = ({}) => {
     link.parentNode.removeChild(link);
   };
 
+  const handelGetFiles = async () => {
+    if (data === undefined) return;
+    console.log(
+      JSON.stringify({
+        schemaType: data.AuthType,
+      })
+    );
+    const file = await fetch(
+      "https://auth-generator-service.vercel.app/api/getAuthSystem",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          schema: data.AuthType,
+        }),
+      }
+    );
+
+    console.log(file);
+
+    const blob = await file.blob();
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `backend.zip`);
+
+    // Append to html link element page
+    document.body.appendChild(link);
+
+    // Start download
+    link.click();
+
+    // Clean up and remove the link
+    //@ts-ignore
+    link.parentNode.removeChild(link);
+  };
+
+  //@ts-ignore
   if (isFetching) return <div>Loading...</div>;
 
   return (
@@ -65,23 +102,33 @@ const index: FC<indexProps> = ({}) => {
         <h1 className="text-4xl font-bold">{data?.title}</h1>
         <div className="mx-[10%] mt-20 flex flex-row  justify-between">
           <Link
-            href={`/${query.projectID}/createSchema`}
+            href={`/project/${query.projectID}/createSchema`}
             className="flex h-[25vh] w-[25vw] cursor-pointer flex-col items-center justify-center rounded-2xl bg-white text-2xl font-bold drop-shadow-card hover:scale-105"
           >
             <img src="/prisma-icon.png" />
             Setup Prisma Schema
           </Link>
-          <div className="flex h-[25vh] w-[25vw] cursor-pointer flex-col items-center justify-center rounded-2xl bg-white text-2xl font-bold drop-shadow-card hover:scale-105">
+          <div
+            onClick={() => alert("Comming Soon")}
+            className="flex h-[25vh] w-[25vw] cursor-pointer flex-col items-center justify-center rounded-2xl bg-white text-2xl font-bold drop-shadow-card hover:scale-105"
+          >
             <img src="/schema-icon.png" />
             Visualise Schema
           </div>
         </div>
-        <div className="mt-32 flex items-center justify-center">
+        <div className="mt-32 flex items-center justify-center gap-12">
+          <button
+            onClick={handelGetSchema}
+            className="align-center w-fit rounded-xl border-2 border-blue bg-white py-2 px-20 text-xl font-bold text-black drop-shadow-card hover:border-0 hover:bg-blue-grotto hover:text-white"
+          >
+            Download Schema
+          </button>
+
           <button
             onClick={handelGetFiles}
-            className="align-center w-fit rounded-xl border-2 border-blue bg-white py-2 px-24 text-xl font-bold text-black drop-shadow-card hover:border-0 hover:bg-blue-grotto hover:text-white"
+            className="align-center w-fit rounded-xl border-2 border-blue bg-white py-2 px-20 text-xl font-bold text-black drop-shadow-card hover:border-0 hover:bg-blue-grotto hover:text-white"
           >
-            Download Files
+            Download Boilerplate
           </button>
         </div>
       </div>

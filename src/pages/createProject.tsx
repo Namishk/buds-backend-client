@@ -196,7 +196,7 @@ const createProject: FC<createProjectProps> = ({}) => {
       Schema: schema,
     });
 
-    router.push(`/${res.id}`);
+    router.push(`/project/${res.id}`);
   };
   return (
     <div className=" mx-auto mt-16 h-[70vh] w-[60%] rounded-2xl bg-white font-bold text-black drop-shadow-card">

@@ -80,7 +80,7 @@ const Schema = ({}) => {
 
     if (isSuccess) alert("Updated Successfully");
 
-    push(`/${query.projectID}`);
+    push(`/project/${query.projectID}`);
   };
   if (schema !== undefined)
     return (
@@ -130,7 +130,9 @@ const Schema = ({}) => {
             }}
           />
         )}
-        <h1 className="ml-[10%] text-4xl font-bold text-black">Setup Schema</h1>
+        <h1 className="ml-[10%] mt-6 text-4xl font-bold text-black">
+          Setup Schema
+        </h1>
         <div className="mt-10 flex h-[70vh] w-full flex-row justify-around px-24">
           <section className="no-scrollbar flex h-full w-[15vw] flex-col overflow-y-scroll rounded-2xl bg-white px-2 py-4 drop-shadow-card">
             <AddModalButton schema={schema} setSchema={setSchema} />
@@ -173,7 +175,7 @@ const Schema = ({}) => {
                 {schema?.models[selectedModel]?.fields.map((field, index) => {
                   return (
                     <div
-                      className="mx-4 bg-white px-2 py-4 pl-8 drop-shadow-card hover:cursor-pointer"
+                      className="mx-4 my-2 rounded-2xl bg-white px-2 py-4 pl-8 drop-shadow-card hover:cursor-pointer"
                       onClick={() => {
                         setEditingField(field.name);
                         setOpenModel(true);
@@ -244,7 +246,6 @@ const Schema = ({}) => {
                     key={type.name}
                   >
                     <div className="flex items-center justify-center rounded-md bg-blue-grotto p-3 text-black  group-hover:text-inherit ">
-                      //@ts-nocheck
                       <Icon className="w-5" />
                     </div>
 

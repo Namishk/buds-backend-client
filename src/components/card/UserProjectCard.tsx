@@ -13,7 +13,7 @@ const UserProjectCard: FC<UserProjectCardProps> = ({ project }) => {
       return alert("Login to create a project");
     }
 
-    return push(`/${project.id}`);
+    return push(`/project/${project.id}`);
   };
   return (
     <div
