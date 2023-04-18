@@ -11,9 +11,7 @@ import { api } from "~/utils/api";
 import { useRouter } from "next/router";
 import { redirect } from "next/navigation";
 
-interface CreateSchemaProps {}
-
-const Schema: FC<CreateSchemaProps> = ({}) => {
+const Schema = ({}) => {
   const [schema, setSchema] = useState<Schema>();
   const [selectedModel, setSelectedModel] = useState<number>(-1);
   const [addingField, setAddingField] = useState<FieldType>();
@@ -65,6 +63,7 @@ const Schema: FC<CreateSchemaProps> = ({}) => {
 
   const AddField = (value: any) => {
     if (schema === undefined) return;
+    //@ts-ignore
     schema?.models[selectedModel].fields.push(value);
     localStorage.setItem("schema", JSON.stringify(schema));
   };
