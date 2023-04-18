@@ -222,13 +222,14 @@ const Schema = ({}) => {
                     }))
                   : []),
               ].map((type) => {
-                const Icon =
+                const Icon = (
                   type.type === "enum"
                     ? prismaTypesToIcons.Enum
                     : type.type === "model"
                     ? prismaTypesToIcons.Model
                     : prismaTypesToIcons[type.name] ??
-                      prismaTypesToIcons.default;
+                      prismaTypesToIcons.default
+                ) as ({ className }: any) => JSX.Element;
 
                 return (
                   <button
@@ -243,6 +244,7 @@ const Schema = ({}) => {
                     key={type.name}
                   >
                     <div className="flex items-center justify-center rounded-md bg-blue-grotto p-3 text-black  group-hover:text-inherit ">
+                      //@ts-nocheck
                       <Icon className="w-5" />
                     </div>
 
