@@ -30,7 +30,7 @@ const index: FC<indexProps> = ({}) => {
     console.log("start");
     console.log(JSON.parse(localStorage.getItem("schema") as string));
     const schema = await fetch(
-      "https://schema-generator-service.up.railway.app/generate",
+      "https://schema-generator-service.onrender.com/generate",
       {
         method: "POST",
         body: localStorage.getItem("schema"),
